@@ -44,7 +44,7 @@ Revise o código na branch `feature/add-autor`, faça melhorias e adicione comen
 Após completar a implementação da **Categoria**, **Subcategoria** e o filtro de projetos, faça o **merge** da branch `feature/add-categoria` para a `main` para consolidar as alterações no projeto principal.
 
 ## 4. **Criar um Projeto Next.js para Listar Pessoas e Projetos com Filtro por Categoria**
-Desenvolver um front-end simples usando Next.js, que será responsável por listar as Pessoas e Projetos, com a capacidade de filtrar projetos por Categoria.
+Desenvolver uma aplicação front-end simples utilizando Next.js, com foco nas funcionalidades. O objetivo é listar Pessoas e Projetos, sendo possível filtrar projetos por categoria. Não é necessário investir em um layout ou design; o foco deve ser exclusivamente na implementação correta das funcionalidades
 
 ## 5. **Com base em sua análise da aplicação, adicione abaixo sugestões de melhorias para a solução, caso tenha identificado algum ponto a ser aprimorado**
 
@@ -60,3 +60,4 @@ Para garantir que o banco de dados esteja atualizado com as novas entidades e mi
   ```bash
   dotnet ef migrations add NomeDaMigração --project ../Suz.Projetos.Persistence/
   dotnet ef database update --project ../Suz.Projetos.Persistence/
+  
