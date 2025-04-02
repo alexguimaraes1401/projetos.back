@@ -13,7 +13,6 @@ namespace Suz.Projetos.API
             services.AddTransient<DbContext, ProjetosContext>();
 
             services.AddTransient<IProjetoRepository, ProjetoRepository>();
-            services.AddTransient<IProjetoService, ProjetoService>();
 
             services.AddTransient<IPessoaRepository, PessoaRepository>();
             services.AddTransient<IPessoaService, PessoaService>();
