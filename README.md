@@ -60,3 +60,4 @@ Para garantir que o banco de dados esteja atualizado com as novas entidades e mi
   ```bash
   dotnet ef migrations add NomeDaMigração --project ../Suz.Projetos.Persistence/
   dotnet ef database update --project ../Suz.Projetos.Persistence/
+  
