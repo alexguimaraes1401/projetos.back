@@ -6,5 +6,7 @@
         public DateTime DataCriacao { get; set; }
         public string DescricaoProjeto { get; set; }
         public string TituloProjeto { get; set; }
+
+        // Categoria
     }
 }
