@@ -12,10 +12,34 @@ namespace Suz.Projetos.Respository
             _dbContext = dbContext;
         }
 
+        private bool validaCPF(int CPF)
+        {
+            if (CPF == 0)
+            {
+                return false;
+            }
+            else if (CPF < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public async Task SaveAsync(Pessoa pessoa)
         {
-            _dbContext.Set<Pessoa>().Add(pessoa);
-            await _dbContext.SaveChangesAsync();
+            var resultValidaCPF = validaCPF(pessoa.CPF);
+            if (resultValidaCPF)
+            {
+                _dbContext.Set<Pessoa>().Add(pessoa);
+                await _dbContext.SaveChangesAsync();
+            }
+            else
+            {
+                return;
+            }
         }
 
         public Task<List<Pessoa>> GetAllAsync()

@@ -17,6 +17,10 @@ namespace Suz.Projetos.Persistence.Configurations
             builder.Property(e => e.Descricao)
                 .IsRequired()
                 .HasMaxLength(2048);
+
+            builder.HasOne(e => e.Autor)
+                .WithMany(e => e.Projetos)
+                .HasForeignKey(e => e.AutorId);
         }
     }
 }
