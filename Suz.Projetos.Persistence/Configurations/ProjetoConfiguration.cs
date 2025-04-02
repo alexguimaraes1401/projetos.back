@@ -10,11 +10,11 @@ namespace Suz.Projetos.Persistence.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(e => e.TituloProjeto)
+            builder.Property(e => e.Titulo)
                 .IsRequired()
                 .HasMaxLength(255);
 
-            builder.Property(e => e.DescricaoProjeto)
+            builder.Property(e => e.Descricao)
                 .IsRequired()
                 .HasMaxLength(2048);
         }
