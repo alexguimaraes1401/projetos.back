@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Suz.Projetos.Persistence;
 
@@ -10,9 +11,11 @@ using Suz.Projetos.Persistence;
 namespace Suz.Projetos.Persistence.Migrations
 {
     [DbContext(typeof(ProjetosContext))]
-    partial class ProjetosContextModelSnapshot : ModelSnapshot
+    [Migration("20250417165457_AddRelacionamentoProjetoCategoriaSubcategoria")]
+    partial class AddRelacionamentoProjetoCategoriaSubcategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.14");
@@ -25,7 +28,6 @@ namespace Suz.Projetos.Persistence.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -39,7 +41,7 @@ namespace Suz.Projetos.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("NomePessoa")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
@@ -61,15 +63,15 @@ namespace Suz.Projetos.Persistence.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Descricao")
+                    b.Property<string>("DescricaoProjeto")
                         .IsRequired()
                         .HasMaxLength(2048)
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("SubcategoriaId")
                         .HasColumnType("INTEGER");
-                        
-                    b.Property<string>("Titulo")
+
+                    b.Property<string>("TituloProjeto")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
@@ -94,7 +96,6 @@ namespace Suz.Projetos.Persistence.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

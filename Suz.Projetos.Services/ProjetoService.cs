@@ -1,19 +1,29 @@
 ﻿using Suz.Projetos.Domain.Entities;
 using Suz.Projetos.Domain.Interfaces;
+using Suz.Projetos.Domain.Dto;
 
 namespace Suz.Projetos.Service
 {
     public class ProjetoService : IProjetoService
     {
         private readonly IProjetoRepository _projetoRepository;
-        
+
         public ProjetoService(IProjetoRepository projetoRepository)
         {
             _projetoRepository = projetoRepository;
         }
 
-        public Task Create(Projeto projeto)
+        public Task Create(CreateProjetoDTO projetoDto)
         {
+            var projeto = new Projeto
+            {
+                TituloProjeto = projetoDto.TituloProjeto,
+                DescricaoProjeto = projetoDto.DescricaoProjeto,
+                CategoriaId = projetoDto.CategoriaId,
+                SubcategoriaId = projetoDto.SubcategoriaId,
+                DataCriacao = DateTime.UtcNow
+            };
+
             return _projetoRepository.SaveAsync(projeto);
         }
 
@@ -21,5 +31,11 @@ namespace Suz.Projetos.Service
         {
             return _projetoRepository.GetAllAsync();
         }
+
+        public async Task<List<Projeto>> FiltrarProjetosAsync(int? categoriaId, int? subcategoriaId)
+        {
+            return await _projetoRepository.FiltrarAsync(categoriaId, subcategoriaId);
+        }
+
     }
 }

@@ -6,5 +6,6 @@ namespace Suz.Projetos.Domain.Interfaces
     {
         Task SaveAsync(Projeto projeto);
         Task<List<Projeto>> GetAllAsync();
+        Task<List<Projeto>> FiltrarAsync(int? categoriaId, int? subcategoriaId);
     }
 }

@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Suz.Projetos.Domain.Entities;
 using Suz.Projetos.Domain.Interfaces;
+using Suz.Projetos.Domain.Dto;
+using Suz.Projetos.Service;
+using Suz.Projetos.Respository;
 
 namespace Suz.Projetos.API.Controllers
 {
@@ -9,10 +12,12 @@ namespace Suz.Projetos.API.Controllers
     public class ProjetosController : ControllerBase
     {
         private readonly IProjetoRepository _projetoRepository;
+        private readonly IProjetoService _projetoService;
 
-        public ProjetosController(IProjetoRepository projetoRepository)
+        public ProjetosController(IProjetoRepository projetoRepository, IProjetoService projetoService)
         {
             _projetoRepository = projetoRepository;
+            _projetoService = projetoService;
         }
 
         [HttpGet]
@@ -20,7 +25,7 @@ namespace Suz.Projetos.API.Controllers
         {
             try
             {
-                var result = await _projetoRepository.GetAllAsync();
+                var result = await _projetoService.GetAllAsync();
                 return Ok(result);
             }
             catch (Exception)
@@ -30,11 +35,11 @@ namespace Suz.Projetos.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Projeto projeto)
+        public async Task<IActionResult> Post([FromBody] CreateProjetoDTO projetoDto)
         {
             try
             {
-                await _projetoRepository.SaveAsync(projeto);
+                await _projetoService.Create(projetoDto);
                 return Ok();
             }
             catch (Exception)
@@ -42,5 +47,13 @@ namespace Suz.Projetos.API.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("filter")]
+        public async Task<IActionResult> FiltrarProjetos([FromQuery] int? categoriaId, [FromQuery] int? subcategoriaId)
+        {
+            var projetos = await _projetoService.FiltrarProjetosAsync(categoriaId, subcategoriaId);
+            return Ok(projetos);
+        }
+
     }
 }

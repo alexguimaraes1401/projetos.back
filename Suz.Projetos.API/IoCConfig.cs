@@ -18,6 +18,12 @@ namespace Suz.Projetos.API
             services.AddTransient<IPessoaRepository, PessoaRepository>();
             services.AddTransient<IPessoaService, PessoaService>();
 
+            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<ICategoriaService, CategoriaService>();
+
+            services.AddTransient<ISubcategoriaRepository, SubcategoriaRepository>();
+            services.AddTransient<ISubcategoriaService, SubcategoriaService>();
+
             return services;
         }
     }
