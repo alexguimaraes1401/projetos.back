@@ -21,6 +21,19 @@ namespace Suz.Projetos.Persistence.Configurations
             builder.HasOne(e => e.Autor)
                 .WithMany(e => e.Projetos)
                 .HasForeignKey(e => e.AutorId);
+                
+            builder.Property(p => p.DataCriacao)
+                .IsRequired();
+
+            builder.HasOne(p => p.Categoria)
+                .WithMany()
+                .HasForeignKey(p => p.CategoriaId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(p => p.Subcategoria)
+                .WithMany()
+                .HasForeignKey(p => p.SubcategoriaId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

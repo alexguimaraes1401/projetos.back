@@ -6,8 +6,13 @@
         public DateTime DataCriacao { get; set; }
         public string Descricao { get; set; }
         public string Titulo { get; set; }
+        
+        // Categoria
+        public int CategoriaId { get; set; }
+        public Categoria Categoria { get; set; } = null!;
 
-        public Pessoa? Autor { get; set; }
-        public int? AutorId { get; set; }
+        // Subcategoria
+        public int? SubcategoriaId { get; set; }
+        public Subcategoria? Subcategoria { get; set; }
     }
 }

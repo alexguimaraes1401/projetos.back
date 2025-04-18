@@ -13,3 +13,5 @@ bin/
 [Oo]bj/
 .vs/
 
+# SQLite
+*.db
