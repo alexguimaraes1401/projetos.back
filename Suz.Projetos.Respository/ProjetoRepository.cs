@@ -16,6 +16,8 @@ namespace Suz.Projetos.Respository
         public Task<List<Projeto>> GetAllAsync()
         {
             return _dbContext.Set<Projeto>()
+                .Include(p => p.Categoria)
+                .Include(p => p.Subcategoria)
                 .ToListAsync();
         }
 
