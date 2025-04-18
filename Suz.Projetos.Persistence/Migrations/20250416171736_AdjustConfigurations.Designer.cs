@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Suz.Projetos.Persistence;
 
@@ -10,9 +11,11 @@ using Suz.Projetos.Persistence;
 namespace Suz.Projetos.Persistence.Migrations
 {
     [DbContext(typeof(ProjetosContext))]
-    partial class ProjetosContextModelSnapshot : ModelSnapshot
+    [Migration("20250417171736_AdjustConfigurations")]
+    partial class AdjustConfigurations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.14");

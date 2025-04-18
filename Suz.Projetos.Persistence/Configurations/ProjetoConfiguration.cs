@@ -17,6 +17,19 @@ namespace Suz.Projetos.Persistence.Configurations
             builder.Property(e => e.DescricaoProjeto)
                 .IsRequired()
                 .HasMaxLength(2048);
+
+            builder.Property(p => p.DataCriacao)
+                .IsRequired();
+
+            builder.HasOne(p => p.Categoria)
+                .WithMany()
+                .HasForeignKey(p => p.CategoriaId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(p => p.Subcategoria)
+                .WithMany()
+                .HasForeignKey(p => p.SubcategoriaId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

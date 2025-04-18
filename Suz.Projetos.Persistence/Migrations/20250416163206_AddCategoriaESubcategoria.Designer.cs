@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Suz.Projetos.Persistence;
 
@@ -10,9 +11,11 @@ using Suz.Projetos.Persistence;
 namespace Suz.Projetos.Persistence.Migrations
 {
     [DbContext(typeof(ProjetosContext))]
-    partial class ProjetosContextModelSnapshot : ModelSnapshot
+    [Migration("20250417163206_AddCategoriaESubcategoria")]
+    partial class AddCategoriaESubcategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.14");
@@ -25,7 +28,6 @@ namespace Suz.Projetos.Persistence.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -55,9 +57,6 @@ namespace Suz.Projetos.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CategoriaId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("TEXT");
 
@@ -66,19 +65,12 @@ namespace Suz.Projetos.Persistence.Migrations
                         .HasMaxLength(2048)
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("SubcategoriaId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("TituloProjeto")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoriaId");
-
-                    b.HasIndex("SubcategoriaId");
 
                     b.ToTable("Projetos");
                 });
@@ -94,7 +86,6 @@ namespace Suz.Projetos.Persistence.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -102,24 +93,6 @@ namespace Suz.Projetos.Persistence.Migrations
                     b.HasIndex("CategoriaId");
 
                     b.ToTable("Subcategorias");
-                });
-
-            modelBuilder.Entity("Suz.Projetos.Domain.Entities.Projeto", b =>
-                {
-                    b.HasOne("Suz.Projetos.Domain.Entities.Categoria", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Suz.Projetos.Domain.Entities.Subcategoria", "Subcategoria")
-                        .WithMany()
-                        .HasForeignKey("SubcategoriaId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.Navigation("Categoria");
-
-                    b.Navigation("Subcategoria");
                 });
 
             modelBuilder.Entity("Suz.Projetos.Domain.Entities.Subcategoria", b =>

@@ -13,9 +13,16 @@ namespace Suz.Projetos.API
             services.AddTransient<DbContext, ProjetosContext>();
 
             services.AddTransient<IProjetoRepository, ProjetoRepository>();
+            services.AddTransient<IProjetoService, ProjetoService>();
 
             services.AddTransient<IPessoaRepository, PessoaRepository>();
             services.AddTransient<IPessoaService, PessoaService>();
+
+            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<ICategoriaService, CategoriaService>();
+
+            services.AddTransient<ISubcategoriaRepository, SubcategoriaRepository>();
+            services.AddTransient<ISubcategoriaService, SubcategoriaService>();
 
             return services;
         }

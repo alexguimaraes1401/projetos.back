@@ -8,5 +8,11 @@
         public string TituloProjeto { get; set; }
 
         // Categoria
+        public int CategoriaId { get; set; }
+        public Categoria Categoria { get; set; } = null!;
+
+        // Subcategoria
+        public int? SubcategoriaId { get; set; }
+        public Subcategoria? Subcategoria { get; set; }
     }
 }
