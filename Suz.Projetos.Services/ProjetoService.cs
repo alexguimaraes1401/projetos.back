@@ -17,8 +17,8 @@ namespace Suz.Projetos.Service
         {
             var projeto = new Projeto
             {
-                TituloProjeto = projetoDto.TituloProjeto,
-                DescricaoProjeto = projetoDto.DescricaoProjeto,
+                Titulo = projetoDto.TituloProjeto,
+                Descricao = projetoDto.DescricaoProjeto,
                 CategoriaId = projetoDto.CategoriaId,
                 SubcategoriaId = projetoDto.SubcategoriaId,
                 DataCriacao = DateTime.UtcNow
